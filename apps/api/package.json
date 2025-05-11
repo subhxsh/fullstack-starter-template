@@ -1,0 +1,31 @@
+{
+  "type": "module",
+  "scripts": {
+    "clean": "tsc -b --clean",
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "@monorepo/database": "*",
+    "close-with-grace": "^2.2.0",
+    "connect-pg-simple": "^10.0.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "helmet": "^8.1.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pino": "^9.6.0",
+    "pino-http": "^10.4.0",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@types/connect-pg-simple": "^7.0.3",
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.1",
+    "@types/express-session": "^1.18.1",
+    "@types/node": "^22.15.17",
+    "@types/passport": "^1.0.17",
+    "@types/passport-local": "^1.0.38",
+    "typescript": "^5.8.3"
+  }
+}

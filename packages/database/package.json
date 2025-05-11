@@ -1,11 +1,16 @@
 {
+  "name": "@monorepo/database",
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {},
   "dependencies": {
-    "drizzle-orm": "^0.43.1"
+    "drizzle-orm": "^0.43.1",
+    "pg": "^8.15.6"
   },
   "devDependencies": {
     "@types/node": "^22.15.17",
+    "@types/pg": "^8.15.1",
     "drizzle-kit": "^0.31.1",
     "typescript": "^5.8.3"
   }
