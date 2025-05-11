@@ -1,0 +1,16 @@
+{
+  "todo-tree.general.tags": ["BUG", "HACK", "FIXME", "TODO", "NOTE"],
+  "files.autoSave": "onFocusChange",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.linkedEditing": true,
+  "editor.codeActionsOnSave": { "source.organizeImports": "always" },
+  "css.customData": [".vscode/tailwind.json"],
+  "files.watcherExclude": { "packages/frontend/src/route-tree.gen.ts": true },
+  "files.readonlyInclude": { "packages/frontend/src/route-tree.gen.ts": true },
+  "[terraform]": { "editor.defaultFormatter": "hashicorp.terraform" },
+  "search.exclude": {
+    "pnpm-lock.yaml": true,
+    "packages/frontend/src/route-tree.gen.ts": true
+  },
+}

@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "gruntfuggly.todo-tree",
+    "humao.rest-client",
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "github.vscode-github-actions",
+    "hashicorp.terraform",
+    "ms-azuretools.vscode-docker",
+    "astro-build.astro-vscode"
+  ]
+}
