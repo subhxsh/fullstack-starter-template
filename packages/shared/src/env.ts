@@ -10,6 +10,8 @@ const result = z
       .optional()
       .default("development"),
 
+    DATABASE_URL: z.string().url(),
+
     SESSION_SECRET: z.string(),
 
     LOG_LEVEL: z

@@ -1,4 +1,5 @@
-import { pool } from "@monorepo/database";
+import { pool } from "@monorepo/shared/database";
+import { envServer } from "@monorepo/shared/env";
 import closeWithGrace from "close-with-grace";
 import pgSimple from "connect-pg-simple";
 import cors from "cors";
@@ -6,10 +7,9 @@ import express from "express";
 import session from "express-session";
 import helmet from "helmet";
 import passport from "passport";
-import { Strategy as LocalStrategy } from "passport-local";
+// import { Strategy as LocalStrategy } from "passport-local";
 import { pinoHttp, startTime } from "pino-http";
 import { errorMiddleware } from "./middlewares/error.ts";
-import { envServer } from "./utils/env.ts";
 import { logger } from "./utils/logger.ts";
 
 const app = express();
@@ -41,7 +41,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new LocalStrategy(async (username, password, done) => {}));
+// passport.use(new LocalStrategy(async (username, password, done) => {}));
 
 // passport.serializeUser((user, done) => done(null, { id: user.id }));
 

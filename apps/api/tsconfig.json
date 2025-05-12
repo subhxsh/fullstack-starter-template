@@ -1,4 +1,4 @@
 {
   "extends": "../../tsconfig.node.jsonc",
-  "references": [{ "path": "../../packages/database" }]
+  "references": [{ "path": "../../packages/shared" }]
 }

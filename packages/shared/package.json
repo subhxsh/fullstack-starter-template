@@ -1,0 +1,25 @@
+{
+  "name": "@monorepo/shared",
+  "type": "module",
+  "exports": {
+    "./env": {
+      "import": "./dist/env.js",
+      "types": "./dist/env.d.ts"
+    },
+    "./database": {
+      "import": "./dist/database/index.js",
+      "types": "./dist/database/index.d.ts"
+    }
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.43.1",
+    "pg": "^8.15.6",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.17",
+    "@types/pg": "^8.15.1",
+    "drizzle-kit": "^0.31.1",
+    "typescript": "^5.8.3"
+  }
+}
