@@ -1,4 +1,9 @@
-import { pool } from "@monorepo/shared/database";
+import { pool } from "@monorepo/shared/db";
+import {
+  getUserById,
+  getUserByUsername,
+  type SelectUser,
+} from "@monorepo/shared/db/user";
 import { envServer } from "@monorepo/shared/env";
 import closeWithGrace from "close-with-grace";
 import pgSimple from "connect-pg-simple";
@@ -7,10 +12,17 @@ import express from "express";
 import session from "express-session";
 import helmet from "helmet";
 import passport from "passport";
-// import { Strategy as LocalStrategy } from "passport-local";
+import { Strategy as LocalStrategy } from "passport-local";
 import { pinoHttp, startTime } from "pino-http";
 import { errorMiddleware } from "./middlewares/error.ts";
 import { logger } from "./utils/logger.ts";
+import { comparePassword } from "./utils/scrypt.ts";
+
+declare global {
+  namespace Express {
+    interface User extends SelectUser {}
+  }
+}
 
 const app = express();
 
@@ -41,11 +53,31 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// passport.use(new LocalStrategy(async (username, password, done) => {}));
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
+    const user = await getUserByUsername(username);
+    if (!user) return done(null, false);
+    if (!(await comparePassword(password, user.password))) {
+      done(null, false);
+      return;
+    }
+    done(null, user);
+  })
+);
 
-// passport.serializeUser((user, done) => done(null, { id: user.id }));
+passport.serializeUser<{ id: string }>((user, done) => {
+  done(null, { id: user.id });
+});
 
-// passport.deserializeUser(async (data, done) => {});
+passport.deserializeUser<{ id: string }>(async (data, done) => {
+  try {
+    const user = await getUserById(data.id);
+    if (!user) done(null, false);
+    else done(null, user);
+  } catch (err) {
+    done(err, false);
+  }
+});
 
 app.get("/api/health", (_req, res) => {
   res.send({
