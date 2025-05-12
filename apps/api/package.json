@@ -2,7 +2,9 @@
   "type": "module",
   "scripts": {
     "clean": "tsc -b --clean",
-    "build": "tsc -b"
+    "dev": "tsc-watch -b --onSuccess \"node --env-file=.env dist/index.js\" | pino-pretty",
+    "build": "tsc -b",
+    "start": "node --enable-source-maps dist/index.js"
   },
   "dependencies": {
     "@monorepo/database": "*",
@@ -26,6 +28,8 @@
     "@types/node": "^22.15.17",
     "@types/passport": "^1.0.17",
     "@types/passport-local": "^1.0.38",
+    "pino-pretty": "^13.0.0",
+    "tsc-watch": "^6.2.1",
     "typescript": "^5.8.3"
   }
 }
